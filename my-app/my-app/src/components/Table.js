@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 export default function Table({ isChecked, searchInput, data }) {
@@ -23,7 +24,9 @@ export default function Table({ isChecked, searchInput, data }) {
           {filteredAndSearchedProducts.length > 0 ? (
             filteredAndSearchedProducts.map((product) => (
               <tr key={product.id}>
-                <td>{product.name}</td>
+                <td>
+                  <Link to={`/product/${product.id}`}>{product.name}</Link>
+                </td>
                 <td>{product.price}</td>
               </tr>
             ))

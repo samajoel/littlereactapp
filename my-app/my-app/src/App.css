@@ -35,16 +35,30 @@
 }
 
 .tablecontainer table td,
-.tablecontainer table th {
+.tablecontainer table th,
+.tablecontainer h2,
+.tablecontainer div ul li {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+.tablecontainer div ul li {
+  list-style-type: none;
+}
+
+.tablecontainer a {
+  text-decoration: none;
+}
+
+.tablecontainer table tbody tr td a {
+  text-decoration: none;
 }
 
 .tablecontainer table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-.tablecontainer table tr:hover {
+.tablecontainer table tr:hover .tablecontainer div ul li {
   background-color: #ddd;
 }
 
