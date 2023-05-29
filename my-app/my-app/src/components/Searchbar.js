@@ -1,28 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "../App.css";
 
-export default function Searchbar({ products }) {
-  const [searchInput, setSearchInput] = useState("");
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
-  };
-
-  if (searchInput.length > 0) {
-    products.filter((product) => {
-      return product.name.match(searchInput);
-    });
-  }
-
+export default function Searchbar({ onChange }) {
   return (
     <div className="search">
       <h3>Search</h3>
       <input
         type="search"
         placeholder="Search here"
-        onChange={handleChange}
-        value={searchInput}
+        onChange={onChange}
       ></input>
     </div>
   );
