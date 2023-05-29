@@ -1,17 +1,14 @@
 import React from "react";
 import "../App.css";
-import { products } from "../data";
 
-export default function Table({ isChecked, searchInput }) {
+export default function Table({ isChecked, searchInput, data }) {
   const filteredProducts = isChecked
-    ? products.filter((product) => product.inStock)
-    : products;
+    ? data.filter((product) => product.inStock)
+    : data;
 
-  const filteredAndSearchedProducts = searchInput
-    ? filteredProducts.filter((product) =>
-        product.name.toLowerCase().includes(searchInput.toLowerCase())
-      )
-    : filteredProducts;
+  const filteredAndSearchedProducts = filteredProducts.filter((product) =>
+    product.name.toLowerCase().includes(searchInput.toLowerCase())
+  );
 
   return (
     <div className="tablecontainer">
@@ -23,8 +20,7 @@ export default function Table({ isChecked, searchInput }) {
           </tr>
         </thead>
         <tbody>
-          {Array.isArray(filteredAndSearchedProducts) &&
-          filteredAndSearchedProducts.length > 0 ? (
+          {filteredAndSearchedProducts.length > 0 ? (
             filteredAndSearchedProducts.map((product) => (
               <tr key={product.id}>
                 <td>{product.name}</td>
