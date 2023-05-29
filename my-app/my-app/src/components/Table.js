@@ -1,21 +1,35 @@
 import React from "react";
-import { products } from "../data.js";
 import "../App.css";
+import { products } from "../data";
 
-export default function Table() {
+export default function Table({ isChecked }) {
+  const filteredProducts = isChecked
+    ? products.filter((product) => product.inStock)
+    : products;
+
   return (
     <div className="tablecontainer">
       <table>
-        <tr>
-          <th>Name</th>
-          <th>Price</th>
-        </tr>
-        {products.map((product) => (
+        <thead>
           <tr>
-            <td>{product.name}</td>
-            <td>{product.price}</td>
+            <th>Name</th>
+            <th>Price</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {Array.isArray(filteredProducts) && filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="2">No products available</td>
+            </tr>
+          )}
+        </tbody>
       </table>
     </div>
   );
